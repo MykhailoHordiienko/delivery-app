@@ -1,9 +1,9 @@
-import Image from 'next/image';
+import ShoppingList from '@/components/ShoppingList/ShoppingList';
 
 export default function Home() {
   return (
-    <main>
-      <h1>Main Page</h1>
+    <main className="h-full p-6">
+      <ShoppingList />
     </main>
   );
 }

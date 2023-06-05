@@ -4,13 +4,13 @@ import Link from 'next/link';
 
 const Header = () => {
   const pathName = usePathname();
-  console.log(pathName);
+
   return (
-    <header className="p-6 bg-zinc-100">
+    <header className="h-12 flex items-center justify-center bg-zinc-100">
       <nav className="flex gap-6 items-center justify-center ">
         <Link
           href="/"
-          className={`${pathName === '/' && 'text-blue-600'}`}
+          className={`${pathName !== '/shoppingcart' && 'text-blue-600'}`}
         >
           Shop
         </Link>

@@ -1,4 +1,4 @@
-import Header from '@/components/Header';
+import Header from '@/components/Header/Header';
 import './globals.css';
 import { JetBrains_Mono } from 'next/font/google';
 
@@ -12,7 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={jetBrainsMono.className}>
+      <body className={`${jetBrainsMono.className} h-screen flex flex-col`}>
         <Header />
         {children}
       </body>
