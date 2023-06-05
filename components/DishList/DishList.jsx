@@ -3,7 +3,7 @@ import DishItem from '../DishItem/DishItem';
 
 const DishList = ({ shop }) => {
   return (
-    <ul>
+    <ul className="flex gap-4 flex-wrap justify-center">
       {dishes[shop].map((item, idx) => (
         <DishItem
           key={idx}
