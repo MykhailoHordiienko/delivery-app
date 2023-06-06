@@ -12,13 +12,34 @@ const CartListItem = ({ item }) => {
       return prev.filter(item => item.id !== id);
     });
   };
-  //   const handleChangeQuantity = () => {
-  //     setData(prev => {
-  //       console.log(prev);
-  //       console.log(prev.find(item => item.id === id));
-  //       return prev;
-  //     });
-  //   };
+  const handleDecrement = () => {
+    if (quantity <= 1) {
+      return;
+    }
+    setData(prev => {
+      const itemChangedQuantity = prev.map(item => {
+        if (item.id === id) {
+          return { ...item, quantity: item.quantity - 1 };
+        }
+        return item;
+      });
+
+      return itemChangedQuantity;
+    });
+  };
+  const handleIncrement = () => {
+    setData(prev => {
+      const itemChangedQuantity = prev.map(item => {
+        if (item.id === id) {
+          return { ...item, quantity: item.quantity + 1 };
+        }
+        return item;
+      });
+
+      return itemChangedQuantity;
+    });
+  };
+
   return (
     <li>
       <Image
@@ -30,7 +51,24 @@ const CartListItem = ({ item }) => {
         <h2>{title}</h2>
         <p>Price : {price} $</p>
       </div>
-      <input
+      <div className="flex justify-around p-2">
+        <button
+          onClick={handleIncrement}
+          className="w-14 p-2 rounded-xl bg-blue-200 hover:bg-blue-600 focus-visible:bg-blue-600 hover:text-zinc-100 focus-visible:text-zinc-100"
+          type="button"
+        >
+          +
+        </button>
+        <p className="text-center font-bold">{quantity}</p>
+        <button
+          onClick={handleDecrement}
+          className="w-14 p-2 rounded-xl bg-blue-200 hover:bg-blue-600 focus-visible:bg-blue-600 hover:text-zinc-100 focus-visible:text-zinc-100"
+          type="button"
+        >
+          -
+        </button>
+      </div>
+      {/* <input
         className="w-full h-8 p-2 mt-4 mb-4"
         type="number"
         name="quantity"
@@ -38,8 +76,7 @@ const CartListItem = ({ item }) => {
         min="1"
         max="10"
         value={quantity}
-        // onChange={handleChangeQuantity}
-      />
+      /> */}
       <button
         onClick={() => handleRemove(id)}
         type="button"
