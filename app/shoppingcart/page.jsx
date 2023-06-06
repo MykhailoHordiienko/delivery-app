@@ -2,13 +2,15 @@
 import { useGlobalContext } from '@/app/Context/store';
 import CartList from '@/components/CartList/CartList';
 import FormCart from '@/components/FormCart/FormCart';
+import normalizeOrder from '@/helpers/normalizeOrder';
 
 const ShoppingCartPage = () => {
   const { data: order } = useGlobalContext();
-  console.log(order);
-  const totalPrice = order?.reduce((acc, item) => {
+  const totalPrice = order.reduce((acc, item) => {
     return acc + item.price;
   }, 0);
+
+  const uniqueOrder = normalizeOrder(order);
 
   return (
     <>
@@ -17,7 +19,7 @@ const ShoppingCartPage = () => {
         <p className="mx-auto mt-9">Total Prise: {totalPrice}$</p>
       </aside>
       <section className="p-6 w-full overflow-x-scroll rounded-lg flex border border-black bg-zinc-100">
-        <CartList order={order} />
+        <CartList order={uniqueOrder} />
       </section>
     </>
   );

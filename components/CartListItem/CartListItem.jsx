@@ -5,7 +5,7 @@ import Image from 'next/image';
 import defaultImg from '../../public/defaultImg.jpeg';
 
 const CartListItem = ({ item }) => {
-  const { title, photo, price, id } = item;
+  const { title, photo, price, id, quantity } = item;
   const { data, setData } = useGlobalContext();
   const handleRemove = id => {
     setData(prev => {
@@ -23,15 +23,16 @@ const CartListItem = ({ item }) => {
         <h2>{title}</h2>
         <p>Price : {price} $</p>
       </div>
-      {/* <input
+      <input
         className="w-full h-8 p-2 mt-4 mb-4"
         type="number"
         name="quantity"
         step="1"
         min="1"
         max="10"
-        value={1}
-      /> */}
+        value={quantity}
+        onChange={() => console.log('hi')}
+      />
       <button
         onClick={() => handleRemove(id)}
         type="button"
