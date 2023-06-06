@@ -1,18 +1,11 @@
 import DishList from '@/components/DishList/DishList';
 import ShoppingList from '@/components/ShoppingList/ShoppingList';
+import { getDishesList } from '@/operations/getDishesList';
+import { getShopsList } from '@/operations/getShopsList';
 
 const ShopPage = async ({ params: { shop } }) => {
-  const reqShop = await fetch('http://localhost:3000/api/shops');
-  const shops = await reqShop.json();
-  const reqDishes = await fetch('http://localhost:3000/api/dishes', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ currentShop: shop }),
-  });
-  const dishes = await reqDishes.json();
-  //   console.log(dishes);
+  const shops = await getShopsList();
+  const dishes = await getDishesList(shop);
 
   return (
     <>

@@ -1,7 +1,10 @@
+'use client';
 import Image from 'next/image';
 import defaultImg from '../../public/defaultImg.jpeg';
+import { useGlobalContext } from '@/app/Context/store';
 const DishListItem = ({ item }) => {
   const { title, photo, price } = item;
+  const { data, setData } = useGlobalContext();
 
   return (
     <li>
@@ -15,6 +18,7 @@ const DishListItem = ({ item }) => {
         <p>Price : {price} $</p>
       </div>
       <button
+        onClick={() => setData(prev => [...prev, item])}
         type="button"
         className="w-full p-2 rounded-xl bg-blue-200 hover:bg-blue-600 focus-visible:bg-blue-600 hover:text-zinc-100 focus-visible:text-zinc-100"
       >

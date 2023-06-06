@@ -1,9 +1,17 @@
+'use client';
+import { useGlobalContext } from '@/app/Context/store';
+
 import Image from 'next/image';
 import defaultImg from '../../public/defaultImg.jpeg';
 
 const CartListItem = ({ item }) => {
-  const { title, photo, price } = item;
-
+  const { title, photo, price, id } = item;
+  const { data, setData } = useGlobalContext();
+  const handleRemove = id => {
+    setData(prev => {
+      return prev.filter(item => item.id !== id);
+    });
+  };
   return (
     <li>
       <Image
@@ -25,6 +33,7 @@ const CartListItem = ({ item }) => {
         value={1}
       /> */}
       <button
+        onClick={() => handleRemove(id)}
         type="button"
         className="w-full p-2 rounded-xl bg-blue-200 hover:bg-blue-600 focus-visible:bg-blue-600 hover:text-zinc-100 focus-visible:text-zinc-100"
       >

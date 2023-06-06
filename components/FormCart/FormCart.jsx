@@ -8,7 +8,7 @@ const FormCart = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = data => console.log(data);
-  console.log('Error', errors);
+  //   console.log('Error', errors);
 
   return (
     <form

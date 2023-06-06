@@ -1,4 +1,3 @@
-import dishes from '@/dishes';
 import DishListItem from '../DishItem/DishListItem';
 
 const DishList = ({ dishes }) => {
