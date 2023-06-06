@@ -2,14 +2,15 @@
 import Image from 'next/image';
 import defaultImg from '../../public/defaultImg.jpeg';
 import { useGlobalContext } from '@/app/Context/store';
-import { useState } from 'react';
+import normalizeOrder from '@/helpers/normalizeOrder';
 const DishListItem = ({ item }) => {
   const { title, photo, price, id } = item;
-  const { data, setData } = useGlobalContext();
-  const [disabled, setDisabled] = useState(false);
+  const { setData } = useGlobalContext();
 
   const handleAddToOrder = () => {
-    setData(prev => [...prev, item]);
+    setData(prev => {
+      return normalizeOrder([...prev, item]);
+    });
   };
 
   return (

@@ -7,10 +7,8 @@ import normalizeOrder from '@/helpers/normalizeOrder';
 const ShoppingCartPage = () => {
   const { data: order } = useGlobalContext();
   const totalPrice = order.reduce((acc, item) => {
-    return acc + item.price;
+    return acc + item.price * item.quantity;
   }, 0);
-
-  const uniqueOrder = normalizeOrder(order);
 
   return (
     <>
@@ -19,7 +17,7 @@ const ShoppingCartPage = () => {
         <p className="mx-auto mt-9">Total Prise: {totalPrice}$</p>
       </aside>
       <section className="p-6 w-full overflow-x-scroll rounded-lg flex border border-black bg-zinc-100">
-        <CartList order={uniqueOrder} />
+        <CartList order={order} />
       </section>
     </>
   );

@@ -12,6 +12,13 @@ const CartListItem = ({ item }) => {
       return prev.filter(item => item.id !== id);
     });
   };
+  //   const handleChangeQuantity = () => {
+  //     setData(prev => {
+  //       console.log(prev);
+  //       console.log(prev.find(item => item.id === id));
+  //       return prev;
+  //     });
+  //   };
   return (
     <li>
       <Image
@@ -31,7 +38,7 @@ const CartListItem = ({ item }) => {
         min="1"
         max="10"
         value={quantity}
-        onChange={() => console.log('hi')}
+        // onChange={handleChangeQuantity}
       />
       <button
         onClick={() => handleRemove(id)}

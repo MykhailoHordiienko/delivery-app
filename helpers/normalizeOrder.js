@@ -1,14 +1,16 @@
 const normalizeOrder = data => {
-  const uniqueData = Object.values(
-    data.reduce((acc, item) => {
-      const key = JSON.stringify(item);
-      if (acc[key]) {
-        acc[key].quantity += item.quantity;
-      } else {
-        acc[key] = { ...item };
-      }
-      return acc;
-    }, {})
+  const uniqueData = Array.from(
+    data
+      .reduce((map, item) => {
+        if (map.has(item.id)) {
+          const existingItem = map.get(item.id);
+          existingItem.quantity += item.quantity;
+        } else {
+          map.set(item.id, { ...item });
+        }
+        return map;
+      }, new Map())
+      .values()
   );
   return uniqueData;
 };
