@@ -6,7 +6,7 @@ import defaultImg from '../../public/defaultImg.jpeg';
 
 const CartListItem = ({ item }) => {
   const { title, photo, price, id, quantity } = item;
-  const { data, setData } = useGlobalContext();
+  const { setData } = useGlobalContext();
   const handleRemove = id => {
     setData(prev => {
       return prev.filter(item => item.id !== id);
@@ -62,21 +62,13 @@ const CartListItem = ({ item }) => {
         <p className="text-center font-bold">{quantity}</p>
         <button
           onClick={handleDecrement}
-          className="w-14 p-2 rounded-xl bg-blue-200 hover:bg-blue-600 focus-visible:bg-blue-600 hover:text-zinc-100 focus-visible:text-zinc-100"
+          disabled={quantity <= 1}
+          className="w-14 p-2 rounded-xl bg-blue-200 hover:bg-blue-600 focus-visible:bg-blue-600 hover:text-zinc-100 focus-visible:text-zinc-100 disabled:opacity-25"
           type="button"
         >
           -
         </button>
       </div>
-      {/* <input
-        className="w-full h-8 p-2 mt-4 mb-4"
-        type="number"
-        name="quantity"
-        step="1"
-        min="1"
-        max="10"
-        value={quantity}
-      /> */}
       <button
         onClick={() => handleRemove(id)}
         type="button"
