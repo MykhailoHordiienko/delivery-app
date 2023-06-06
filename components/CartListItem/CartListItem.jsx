@@ -15,7 +15,7 @@ const CartListItem = ({ item }) => {
         <h2>{title}</h2>
         <p>Price : {price} $</p>
       </div>
-      <input
+      {/* <input
         className="w-full h-8 p-2 mt-4 mb-4"
         type="number"
         name="quantity"
@@ -23,7 +23,7 @@ const CartListItem = ({ item }) => {
         min="1"
         max="10"
         value={1}
-      />
+      /> */}
       <button
         type="button"
         className="w-full p-2 rounded-xl bg-blue-200 hover:bg-blue-600 focus-visible:bg-blue-600 hover:text-zinc-100 focus-visible:text-zinc-100"

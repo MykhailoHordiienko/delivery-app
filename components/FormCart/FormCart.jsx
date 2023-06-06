@@ -8,57 +8,118 @@ const FormCart = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = data => console.log(data);
-  console.log(errors);
+  console.log('Error', errors);
 
   return (
     <form
-      className="flex flex-col"
+      className="flex flex-col gap-10"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <input
-        type="text"
-        placeholder="Name:"
-        {...register('Name:', {
-          required: true,
-          max: 12,
-          min: 3,
-          maxLength: 12,
-        })}
-      />
-      <input
-        type="email"
-        placeholder="Email:"
-        {...register('Email:', {
-          required: true,
-          max: 24,
-          min: 3,
-          maxLength: 24,
-          pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i,
-        })}
-      />
-      <input
-        type="tel"
-        placeholder="Phone:"
-        {...register('Phone:', {
-          required: true,
-          max: 24,
-          min: 6,
-          maxLength: 24,
-          pattern: /^\+?3?8?(0[5-9][0-9]\d{7})$/i,
-        })}
-      />
-      <input
-        type="text"
-        placeholder="Address:"
-        {...register('Address:', {
-          required: true,
-          max: 50,
-          min: 5,
-          maxLength: 50,
-        })}
-      />
+      <div className="relative">
+        <input
+          className="w-full h-9 p-1 outline-none border-2 rounded-lg focus:border-blue-600"
+          type="text"
+          placeholder="Name:"
+          {...register('name', {
+            required: 'This field is required',
+            minLength: {
+              value: 3,
+              message: 'Min Length 3',
+            },
+            maxLength: {
+              value: 50,
+              message: 'Max Length 50',
+            },
+          })}
+        />
+        {errors.name && (
+          <p className="absolute -top-5 text-xs text-red-700">
+            {errors.name.message}
+          </p>
+        )}
+      </div>
+      <div className="relative">
+        <input
+          className="w-full h-9 p-1 outline-none border-2 rounded-lg focus:border-blue-600"
+          type="email"
+          placeholder="Email:"
+          {...register('email', {
+            required: 'This field is required',
+            minLength: {
+              value: 3,
+              message: 'Min Length 3',
+            },
+            maxLength: {
+              value: 50,
+              message: 'Max Length 50',
+            },
+            pattern: {
+              value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i,
+              message: 'Enter valid email',
+            },
+          })}
+        />
+        {errors.email && (
+          <p className="absolute -top-5 text-xs text-red-700">
+            {errors.email.message}
+          </p>
+        )}
+      </div>
+      <div className="relative">
+        <input
+          className="w-full h-9 p-1 outline-none border-2 rounded-lg focus:border-blue-600"
+          type="tel"
+          placeholder="Phone:"
+          {...register('phone', {
+            required: 'This field is required',
+            minLength: {
+              value: 3,
+              message: 'Min Length 3',
+            },
+            maxLength: {
+              value: 50,
+              message: 'Max Length 50',
+            },
+            pattern: {
+              value: /^\+?3?8?(0[5-9][0-9]\d{7})$/i,
+              message: 'Enter valid mobile phone',
+            },
+          })}
+        />
+        {errors.phone && (
+          <p className="absolute -top-5 text-xs text-red-700">
+            {errors.phone.message}
+          </p>
+        )}
+      </div>
+      <div className="relative">
+        <input
+          className="w-full h-9 p-1 outline-none border-2 rounded-lg focus:border-blue-600"
+          type="text"
+          placeholder="Address:"
+          {...register('address', {
+            required: 'This field is required',
+            minLength: {
+              value: 3,
+              message: 'Min Length 3',
+            },
+            maxLength: {
+              value: 50,
+              message: 'Max Length 50',
+            },
+          })}
+        />
+        {errors.address && (
+          <p className="absolute -top-5 text-xs text-red-700">
+            {errors.address.message}
+          </p>
+        )}
+      </div>
 
-      <input type="submit" />
+      <input
+        type="submit"
+        className="w-full p-2 rounded-xl bg-blue-200 hover:bg-blue-600 focus-visible:bg-blue-600 hover:text-zinc-100 focus-visible:text-zinc-100"
+      />
     </form>
   );
 };
