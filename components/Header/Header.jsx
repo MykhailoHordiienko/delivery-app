@@ -10,13 +10,17 @@ const Header = () => {
       <nav className="flex gap-6 items-center justify-center ">
         <Link
           href="/"
-          className={`${pathName !== '/shoppingcart' && 'text-blue-600'}`}
+          className={`${
+            pathName !== '/shoppingcart' && 'text-blue-600'
+          } hover:text-blue-600 focus:text-blue-600`}
         >
           Shop
         </Link>
         <Link
           href="/shoppingcart"
-          className={`${pathName === '/shoppingcart' && 'text-blue-600'}`}
+          className={`${
+            pathName === '/shoppingcart' && 'text-blue-600'
+          } hover:text-blue-600 focus:text-blue-600`}
         >
           Shopping Cart
         </Link>

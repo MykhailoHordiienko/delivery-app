@@ -1,9 +1,7 @@
 import React from 'react';
 import ShoppingListItem from '../ShoppingListItem/ShoppingListItem';
 
-const shops = ['MAC', 'KFC', 'BURRITO'];
-
-const ShoppingList = ({ title }) => {
+const ShoppingList = ({ title, shops }) => {
   return (
     <>
       <h1 className="font-semibold text-center">{title}</h1>

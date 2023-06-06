@@ -1,10 +1,10 @@
 import dishes from '@/dishes';
 import DishListItem from '../DishItem/DishListItem';
 
-const DishList = ({ shop }) => {
+const DishList = ({ dishes }) => {
   return (
     <ul className="flex gap-4 flex-wrap justify-center">
-      {dishes[shop].map((item, idx) => (
+      {dishes.map((item, idx) => (
         <DishListItem
           key={idx}
           item={item}

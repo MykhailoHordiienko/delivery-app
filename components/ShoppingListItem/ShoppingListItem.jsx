@@ -9,7 +9,9 @@ const ShoppingListItem = ({ shop }) => {
     <li>
       <Link
         href={hrefTo}
-        className={`${pathName === hrefTo && 'text-blue-600'}`}
+        className={`${
+          pathName === hrefTo && 'text-blue-600'
+        } hover:text-blue-600 focus:text-blue-600 block text-center rounded-lg border min-w-[200px]`}
       >
         {shop}
       </Link>
