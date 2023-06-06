@@ -1,11 +1,11 @@
 import dishes from '@/dishes';
-import DishItem from '../DishItem/DishItem';
+import DishListItem from '../DishItem/DishListItem';
 
 const DishList = ({ shop }) => {
   return (
     <ul className="flex gap-4 flex-wrap justify-center">
       {dishes[shop].map((item, idx) => (
-        <DishItem
+        <DishListItem
           key={idx}
           item={item}
         />

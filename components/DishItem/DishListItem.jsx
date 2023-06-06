@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import defaultImg from '../../public/defaultImg.jpeg';
-const DishItem = ({ item }) => {
+const DishListItem = ({ item }) => {
   const { title, photo, price } = item;
 
   return (
@@ -24,4 +24,4 @@ const DishItem = ({ item }) => {
   );
 };
 
-export default DishItem;
+export default DishListItem;
