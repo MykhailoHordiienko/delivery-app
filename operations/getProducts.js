@@ -11,9 +11,7 @@ const getProducts = async () => {
     const data = await res.json();
     return data;
   } catch (error) {
-    throw new Error(
-      `Cant get data from DB ${error} ${process.env.MONGODB_HOST}`
-    );
+    throw new Error(`Cant get data from DB ${error}`);
   }
 };
 export default getProducts;
