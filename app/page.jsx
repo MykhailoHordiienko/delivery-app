@@ -1,5 +1,5 @@
 import ShoppingList from '@/components/ShoppingList/ShoppingList';
-import { getProducts } from '@/operations/getProducts';
+import getProducts from '@/operations/getProducts';
 
 export default async function Home() {
   const response = await getProducts();

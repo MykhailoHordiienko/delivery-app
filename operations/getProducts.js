@@ -1,6 +1,6 @@
 import getBasePathForFetch from '@/helpers/getBasePathForFetch';
 
-export const getProducts = async () => {
+const getProducts = async () => {
   try {
     const res = await fetch(`${getBasePathForFetch()}/api/products`, {
       method: 'GET',
@@ -14,3 +14,4 @@ export const getProducts = async () => {
     throw new Error(`Cant get data from DB ${error}`);
   }
 };
+export default getProducts;
