@@ -1,3 +1,4 @@
+'use client';
 import DishList from '@/components/DishList/DishList';
 import ShoppingList from '@/components/ShoppingList/ShoppingList';
 import { getProducts } from '@/operations/getProducts';

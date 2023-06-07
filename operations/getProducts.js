@@ -9,9 +9,8 @@ export const getProducts = async () => {
       },
     });
     const data = await res.json();
-    throw new Error(`DATA FROM GETPRODUCT ${data}`);
     return data;
   } catch (error) {
-    throw new Error(`Cant get data from DB ERROR IN HERE ${error}`);
+    throw new Error(`Cant get data from DB ADD CLIENT ${error}`);
   }
 };
