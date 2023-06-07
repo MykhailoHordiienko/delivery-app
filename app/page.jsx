@@ -1,8 +1,9 @@
 import ShoppingList from '@/components/ShoppingList/ShoppingList';
-import { getShopsList } from '@/operations/getShopsList';
+import { getProducts } from '@/operations/getProducts';
 
 export default async function Home() {
-  const shops = await getShopsList();
+  const response = await getProducts();
+  const shops = [...Object.keys(response)];
 
   return (
     <main className="h-full p-6">

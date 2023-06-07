@@ -1,42 +1,34 @@
 'use client';
 import { useGlobalContext } from '@/app/Context/store';
-
 import Image from 'next/image';
 import defaultImg from '../../public/defaultImg.jpeg';
+import {
+  decrementOrderStore,
+  incrementOrderStore,
+  removeFromOrderStore,
+} from '@/app/Context/storeOperations';
 
 const CartListItem = ({ item }) => {
   const { title, photo, price, id, quantity } = item;
-  const { setData } = useGlobalContext();
+  const { setOrder } = useGlobalContext();
+
   const handleRemove = id => {
-    setData(prev => {
-      return prev.filter(item => item.id !== id);
+    setOrder(prev => {
+      return removeFromOrderStore(prev, id);
     });
   };
+
   const handleDecrement = () => {
     if (quantity <= 1) {
       return;
     }
-    setData(prev => {
-      const itemChangedQuantity = prev.map(item => {
-        if (item.id === id) {
-          return { ...item, quantity: item.quantity - 1 };
-        }
-        return item;
-      });
-
-      return itemChangedQuantity;
+    setOrder(prev => {
+      return decrementOrderStore(prev, id);
     });
   };
   const handleIncrement = () => {
-    setData(prev => {
-      const itemChangedQuantity = prev.map(item => {
-        if (item.id === id) {
-          return { ...item, quantity: item.quantity + 1 };
-        }
-        return item;
-      });
-
-      return itemChangedQuantity;
+    setOrder(prev => {
+      return incrementOrderStore(prev, id);
     });
   };
 

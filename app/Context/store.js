@@ -3,16 +3,16 @@
 import { createContext, useContext, useState } from 'react';
 
 const GlobalContext = createContext({
-  data: [],
-  setData: null,
+  order: [],
+  setOrder: null,
 });
 
 export const GlobalContextProvider = ({ children }) => {
-  const [data, setData] = useState([]);
-  console.log(data);
+  const [order, setOrder] = useState([]);
+  console.log(order);
 
   return (
-    <GlobalContext.Provider value={{ data, setData }}>
+    <GlobalContext.Provider value={{ order, setOrder }}>
       {children}
     </GlobalContext.Provider>
   );

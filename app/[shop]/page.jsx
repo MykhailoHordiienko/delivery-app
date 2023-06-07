@@ -1,11 +1,11 @@
 import DishList from '@/components/DishList/DishList';
 import ShoppingList from '@/components/ShoppingList/ShoppingList';
-import { getDishesList } from '@/operations/getDishesList';
-import { getShopsList } from '@/operations/getShopsList';
+import { getProducts } from '@/operations/getProducts';
 
 const ShopPage = async ({ params: { shop } }) => {
-  const shops = await getShopsList();
-  const dishes = await getDishesList(shop);
+  const response = await getProducts();
+  const shops = [...Object.keys(response)];
+  const dishes = response[shop];
 
   return (
     <>

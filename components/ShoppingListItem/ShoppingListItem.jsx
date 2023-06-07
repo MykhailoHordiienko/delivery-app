@@ -5,11 +5,9 @@ import { useGlobalContext } from '@/app/Context/store';
 
 const ShoppingListItem = ({ shop }) => {
   const pathName = usePathname();
-  const { data } = useGlobalContext();
+  const { order } = useGlobalContext();
   const hrefTo = `/${shop}`;
-  console.log(data[0]?.shop === shop);
-  console.log(shop);
-  const disabled = data.length >= 0 || data[0].shop === shop;
+  const disabled = order.length <= 0 || order[0].shop === shop;
   return (
     <li>
       <Link

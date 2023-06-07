@@ -69,9 +69,6 @@ const dishes = {
   ],
 };
 
-export async function POST(request) {
-  const { currentShop } = await request.json();
-  const filteredDishes = dishes[currentShop];
-
-  return NextResponse.json(filteredDishes);
+export async function GET() {
+  return NextResponse.json(dishes);
 }

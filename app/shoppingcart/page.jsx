@@ -5,7 +5,7 @@ import FormCart from '@/components/FormCart/FormCart';
 import normalizeOrder from '@/helpers/normalizeOrder';
 
 const ShoppingCartPage = () => {
-  const { data: order } = useGlobalContext();
+  const { order } = useGlobalContext();
   const totalPrice = order.reduce((acc, item) => {
     return acc + item.price * item.quantity;
   }, 0);
