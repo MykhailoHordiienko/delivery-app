@@ -3,7 +3,7 @@ import getBasePathForFetch from '@/helpers/getBasePathForFetch';
 const getProducts = async () => {
   try {
     const res = await fetch(`${getBasePathForFetch()}/api/products`, {
-      method: 'GET',
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
