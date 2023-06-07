@@ -4,8 +4,8 @@ import { getProducts } from '@/operations/getProducts';
 
 const ShopPage = async ({ params: { shop } }) => {
   const response = await getProducts();
-  const shops = [...Object.keys(response)];
-  const dishes = response[shop];
+  const shops = [...Object.keys(...response)].slice(1);
+  const dishes = response[0][shop];
 
   return (
     <>

@@ -9,7 +9,7 @@ const GlobalContext = createContext({
 
 export const GlobalContextProvider = ({ children }) => {
   const [order, setOrder] = useState([]);
-  console.log(order);
+  //   console.log(order);
 
   return (
     <GlobalContext.Provider value={{ order, setOrder }}>
