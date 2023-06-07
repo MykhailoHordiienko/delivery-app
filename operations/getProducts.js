@@ -8,8 +8,8 @@ export const getProducts = async () => {
         'Content-Type': 'application/json',
       },
     });
-    // const data = await res.json();
-    return res;
+    const data = await res.json();
+    return data;
   } catch (error) {
     throw new Error(`Cant get data from DB ${error}`);
   }

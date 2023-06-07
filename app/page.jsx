@@ -3,8 +3,7 @@ import { getProducts } from '@/operations/getProducts';
 
 export default async function Home() {
   const response = await getProducts();
-  const parsedRes = await response.json();
-  const shops = [...Object.keys(...parsedRes)].slice(1);
+  const shops = [...Object.keys(...response)].slice(1);
 
   return (
     <main className="h-full p-6">
