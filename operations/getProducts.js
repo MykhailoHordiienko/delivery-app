@@ -1,5 +1,11 @@
+import getBasePathForFetch from '@/helpers/getBasePathForFetch';
+
 export const getProducts = async () => {
-  const res = await fetch('http://localhost:3000/api/products');
-  const data = await res.json();
-  return data;
+  try {
+    const res = await fetch(`${getBasePathForFetch()}/api/products`);
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    throw new Error('Cant get data from DB');
+  }
 };

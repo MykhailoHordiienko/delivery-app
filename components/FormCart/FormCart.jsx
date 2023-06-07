@@ -1,14 +1,29 @@
 'use client';
+import { useGlobalContext } from '@/app/Context/store';
+import { postOrderToDb } from '@/operations/postOrderToDb';
 import { useForm } from 'react-hook-form';
 
 const FormCart = () => {
+  const { order, setOrder } = useGlobalContext();
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = data => console.log(data);
-  //   console.log('Error', errors);
+    formState: { errors, isValid },
+    reset,
+  } = useForm({
+    mode: 'onBlur',
+  });
+
+  const onSubmit = async data => {
+    const orderData = {
+      owner: data.email,
+      userData: data,
+      order,
+    };
+    await postOrderToDb(orderData);
+    setOrder([]);
+    reset();
+  };
 
   return (
     <form
@@ -118,7 +133,8 @@ const FormCart = () => {
 
       <input
         type="submit"
-        className="w-full p-2 rounded-xl bg-blue-200 hover:bg-blue-600 focus-visible:bg-blue-600 hover:text-zinc-100 focus-visible:text-zinc-100"
+        disabled={!isValid || order.length < 1}
+        className="w-full p-2 rounded-xl bg-blue-200 disabled:opacity-25 hover:bg-blue-600 focus-visible:bg-blue-600 hover:text-zinc-100 focus-visible:text-zinc-100"
       />
     </form>
   );
