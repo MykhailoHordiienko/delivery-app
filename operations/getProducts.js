@@ -8,9 +8,9 @@ export const getProducts = async () => {
         'Content-Type': 'application/json',
       },
     });
-    const data = await res.json();
-    return data;
+    // const data = await res.json();
+    return res;
   } catch (error) {
-    throw new Error(`Cant get data from DB ADD CLIENT ${error}`);
+    throw new Error(`Cant get data from DB ${error}`);
   }
 };

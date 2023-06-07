@@ -1,12 +1,12 @@
-'use client';
 import DishList from '@/components/DishList/DishList';
 import ShoppingList from '@/components/ShoppingList/ShoppingList';
 import { getProducts } from '@/operations/getProducts';
 
 const ShopPage = async ({ params: { shop } }) => {
   const response = await getProducts();
-  const shops = [...Object.keys(...response)].slice(1);
-  const dishes = response[0][shop];
+  const parsedRes = await response.json();
+  const shops = [...Object.keys(...parsedRes)].slice(1);
+  const dishes = parsedRes[0][shop];
 
   return (
     <>
