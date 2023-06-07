@@ -1,14 +1,9 @@
 import DishList from '@/components/DishList/DishList';
 import ShoppingList from '@/components/ShoppingList/ShoppingList';
-import getBasePathForFetch from '@/helpers/getBasePathForFetch';
-// import { getProducts } from '@/operations/getProducts';
+import { getProducts } from '@/operations/getProducts';
 
 const ShopPage = async ({ params: { shop } }) => {
-  //   const response = await getProducts();
-
-  const res = await fetch(`${getBasePathForFetch()}/api/products`);
-  const response = await res.json();
-
+  const response = await getProducts();
   const shops = [...Object.keys(...response)].slice(1);
   const dishes = response[0][shop];
 
