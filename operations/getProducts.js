@@ -6,6 +6,6 @@ export const getProducts = async () => {
     const data = await res.json();
     return data;
   } catch (error) {
-    throw new Error(`Cant get data from DB ${error} ${getBasePathForFetch()}`);
+    throw new Error(`Cant get data from DB ${error}`);
   }
 };

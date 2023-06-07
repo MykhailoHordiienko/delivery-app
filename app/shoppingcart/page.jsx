@@ -2,7 +2,6 @@
 import { useGlobalContext } from '@/app/Context/store';
 import CartList from '@/components/CartList/CartList';
 import FormCart from '@/components/FormCart/FormCart';
-import normalizeOrder from '@/helpers/normalizeOrder';
 
 const ShoppingCartPage = () => {
   const { order } = useGlobalContext();
