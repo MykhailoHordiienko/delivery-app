@@ -1,9 +1,10 @@
 import ShoppingList from '@/components/ShoppingList/ShoppingList';
-import getProducts from '@/operations/getProducts';
+import { getProductsFromDb } from '@/db/mongodb/mongoOperations';
 
 export default async function Home() {
-  const response = await getProducts();
-  const shops = [...Object.keys(...response)].slice(1);
+  const response = await getProductsFromDb();
+  const parsedResponse = JSON.parse(JSON.stringify(response));
+  const shops = [...Object.keys(...parsedResponse)].slice(1);
 
   return (
     <main className="h-full p-6">
