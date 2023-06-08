@@ -1,6 +1,6 @@
 'use client';
 import { useGlobalContext } from '@/app/Context/store';
-import { addOrderToDb } from '@/db/mongodb/mongoOperations';
+import { postOrderToDb } from '@/operations/postOrderToDb';
 import { useForm } from 'react-hook-form';
 
 const FormCart = () => {
@@ -20,9 +20,7 @@ const FormCart = () => {
       userData: data,
       order,
     };
-
-    await addOrderToDb(orderData);
-
+    await postOrderToDb(orderData);
     setOrder([]);
     reset();
   };
