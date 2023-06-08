@@ -1,8 +1,10 @@
 import getBasePathForFetch from '@/helpers/getBasePathForFetch';
 
+const baseUrl = getBasePathForFetch();
+
 export const postOrderToDb = async orderData => {
   try {
-    await fetch(`${getBasePathForFetch()}/api/orders`, {
+    await fetch(`${baseUrl}/api/orders`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
