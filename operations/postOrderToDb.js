@@ -10,6 +10,6 @@ export const postOrderToDb = async orderData => {
       body: JSON.stringify({ orderData }),
     });
   } catch (error) {
-    throw new Error(`Cant post to DB ${getBasePathForFetch()}`);
+    throw new Error(`Cant post to DB ${getBasePathForFetch()} end off error`);
   }
 };
